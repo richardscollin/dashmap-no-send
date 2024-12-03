@@ -46,9 +46,9 @@ impl<T: Clone> Clone for SharedValue<T> {
     }
 }
 
-unsafe impl<T: Send> Send for SharedValue<T> {}
+// unsafe impl<T: Send> Send for SharedValue<T> {}
 
-unsafe impl<T: Sync> Sync for SharedValue<T> {}
+// unsafe impl<T: Sync> Sync for SharedValue<T> {}
 
 impl<T> SharedValue<T> {
     /// Create a new `SharedValue<T>`

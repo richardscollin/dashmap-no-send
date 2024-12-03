@@ -72,21 +72,21 @@ impl<K: Eq + Hash, V, S: BuildHasher + Clone> Iterator for OwningIter<K, V, S> {
     }
 }
 
-unsafe impl<K, V, S> Send for OwningIter<K, V, S>
-where
-    K: Eq + Hash + Send,
-    V: Send,
-    S: BuildHasher + Clone + Send,
-{
-}
+// unsafe impl<K, V, S> Send for OwningIter<K, V, S>
+// where
+//     K: Eq + Hash + Send,
+//     V: Send,
+//     S: BuildHasher + Clone + Send,
+// {
+// }
 
-unsafe impl<K, V, S> Sync for OwningIter<K, V, S>
-where
-    K: Eq + Hash + Sync,
-    V: Sync,
-    S: BuildHasher + Clone + Sync,
-{
-}
+// unsafe impl<K, V, S> Sync for OwningIter<K, V, S>
+// where
+//     K: Eq + Hash + Sync,
+//     V: Sync,
+//     S: BuildHasher + Clone + Sync,
+// {
+// }
 
 type GuardIter<'a, K, V> = (
     Arc<RwLockReadGuard<'a, HashMap<K, V>>>,
@@ -122,23 +122,23 @@ impl<'i, K: Clone + Hash + Eq, V: Clone, S: Clone + BuildHasher> Clone for Iter<
     }
 }
 
-unsafe impl<'a, 'i, K, V, S, M> Send for Iter<'i, K, V, S, M>
-where
-    K: 'a + Eq + Hash + Send,
-    V: 'a + Send,
-    S: 'a + BuildHasher + Clone,
-    M: Map<'a, K, V, S>,
-{
-}
+// unsafe impl<'a, 'i, K, V, S, M> Send for Iter<'i, K, V, S, M>
+// where
+//     K: 'a + Eq + Hash + Send,
+//     V: 'a + Send,
+//     S: 'a + BuildHasher + Clone,
+//     M: Map<'a, K, V, S>,
+// {
+// }
 
-unsafe impl<'a, 'i, K, V, S, M> Sync for Iter<'i, K, V, S, M>
-where
-    K: 'a + Eq + Hash + Sync,
-    V: 'a + Sync,
-    S: 'a + BuildHasher + Clone,
-    M: Map<'a, K, V, S>,
-{
-}
+// unsafe impl<'a, 'i, K, V, S, M> Sync for Iter<'i, K, V, S, M>
+// where
+//     K: 'a + Eq + Hash + Sync,
+//     V: 'a + Sync,
+//     S: 'a + BuildHasher + Clone,
+//     M: Map<'a, K, V, S>,
+// {
+// }
 
 impl<'a, K: Eq + Hash, V, S: 'a + BuildHasher + Clone, M: Map<'a, K, V, S>> Iter<'a, K, V, S, M> {
     pub(crate) fn new(map: &'a M) -> Self {
@@ -202,23 +202,23 @@ pub struct IterMut<'a, K, V, S = RandomState, M = DashMap<K, V, S>> {
     marker: PhantomData<S>,
 }
 
-unsafe impl<'a, 'i, K, V, S, M> Send for IterMut<'i, K, V, S, M>
-where
-    K: 'a + Eq + Hash + Send,
-    V: 'a + Send,
-    S: 'a + BuildHasher + Clone,
-    M: Map<'a, K, V, S>,
-{
-}
+// unsafe impl<'a, 'i, K, V, S, M> Send for IterMut<'i, K, V, S, M>
+// where
+//     K: 'a + Eq + Hash + Send,
+//     V: 'a + Send,
+//     S: 'a + BuildHasher + Clone,
+//     M: Map<'a, K, V, S>,
+// {
+// }
 
-unsafe impl<'a, 'i, K, V, S, M> Sync for IterMut<'i, K, V, S, M>
-where
-    K: 'a + Eq + Hash + Sync,
-    V: 'a + Sync,
-    S: 'a + BuildHasher + Clone,
-    M: Map<'a, K, V, S>,
-{
-}
+// unsafe impl<'a, 'i, K, V, S, M> Sync for IterMut<'i, K, V, S, M>
+// where
+//     K: 'a + Eq + Hash + Sync,
+//     V: 'a + Sync,
+//     S: 'a + BuildHasher + Clone,
+//     M: Map<'a, K, V, S>,
+// {
+// }
 
 impl<'a, K: Eq + Hash, V, S: 'a + BuildHasher + Clone, M: Map<'a, K, V, S>>
     IterMut<'a, K, V, S, M>
